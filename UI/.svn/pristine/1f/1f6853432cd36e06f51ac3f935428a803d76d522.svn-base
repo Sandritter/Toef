@@ -1,0 +1,101 @@
+﻿<!--
+    Shows certain information about the selected participant
+-->
+<UserControl x:Class="UI.ParticipantInfoUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF4"
+             xmlns:com="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF45"
+             xmlns:meinprojekt="clr-namespace:UI"
+             mc:Ignorable="d"
+             DataContext="{Binding Source={StaticResource Locator}, Path=Menu}">
+  <UserControl.Resources>
+    <!-- Colors -->
+    <SolidColorBrush x:Key="mainBackground" Color="#333333" Opacity="0.7"/>
+    <SolidColorBrush x:Key="infoFont" Color="#DDDDDD"/>
+
+    <!-- Converter -->
+    <meinprojekt:VelocityBarColorConverter x:Key="VelocityBarColorConverter"/>
+    <meinprojekt:FuelBarColorConverter x:Key="FuelBarColorConverter"/>
+  </UserControl.Resources>
+
+  <Grid Margin="10,10,10,0">
+    <Grid.RowDefinitions>
+      <RowDefinition />
+      <RowDefinition />
+      <RowDefinition />
+      <RowDefinition />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="86" />
+      <ColumnDefinition Width="86" />
+    </Grid.ColumnDefinitions>
+
+    <!-- Driver Type -->
+    <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontWeight="Bold" Foreground="{StaticResource infoFont}">Fahrstil:</TextBlock>
+    <Grid Grid.Row="0" Grid.Column="1">
+      <!-- calm driver-->
+      <Image Source="Images/Menu/calmDriver.png">
+        <Image.Style>
+          <Style TargetType="Image">
+            <Setter Property="Visibility" Value="Hidden" />
+            <Style.Triggers>
+              <DataTrigger Binding="{Binding Source={StaticResource Locator}, Path=Menu.SelectedParticipant.DriverType, UpdateSourceTrigger=PropertyChanged}" Value="calm">
+                <Setter Property="Visibility" Value="Visible" />
+              </DataTrigger>
+            </Style.Triggers>
+          </Style>
+        </Image.Style>
+      </Image>
+      <!-- calm driver-->
+      <Image Source="Images/Menu/aggressiveDriver.png">
+        <Image.Style>
+          <Style TargetType="Image">
+            <Setter Property="Visibility" Value="Hidden" />
+            <Style.Triggers>
+              <DataTrigger Binding="{Binding Source={StaticResource Locator}, Path=Menu.SelectedParticipant.DriverType, UpdateSourceTrigger=PropertyChanged}" Value="aggressive">
+                <Setter Property="Visibility" Value="Visible" />
+              </DataTrigger>
+            </Style.Triggers>
+          </Style>
+        </Image.Style>
+      </Image>
+    </Grid>
+
+    <!-- Velocity -->
+    <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontWeight="Bold" Foreground="{StaticResource infoFont}">Tempo:</TextBlock>
+    <Grid Height="25" Grid.Row="1" Grid.Column="1">
+      <ProgressBar Height="24" Minimum="0" Maximum="100"
+									 Value="{Binding Source={StaticResource Locator}, Path=Menu.SelectedParticipant.VelocityBar, UpdateSourceTrigger=PropertyChanged}"
+									 Foreground="{Binding Source={StaticResource Locator}, Path=Menu.SelectedParticipant.VelocityBar, Converter={StaticResource VelocityBarColorConverter}}" />
+      <TextBlock Text="{Binding Source={StaticResource Locator}, Path=Menu.SelectedParticipant.Velocity, UpdateSourceTrigger=PropertyChanged}"
+                 HorizontalAlignment="Center" VerticalAlignment="Center" />
+    </Grid>
+
+    <!-- Fuel -->
+    <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontWeight="Bold" Foreground="{StaticResource infoFont}">Tankstand:</TextBlock>
+    <Grid Height="25" Grid.Row="2" Grid.Column="1">
+      <ProgressBar Height="24" Minimum="0" Maximum="100"
+									 Value="{Binding Source={StaticResource Locator}, Path=Menu.SelectedParticipant.FuelBar, UpdateSourceTrigger=PropertyChanged}"
+									 Foreground="{Binding Source={StaticResource Locator}, Path=Menu.SelectedParticipant.FuelBar, Converter={StaticResource FuelBarColorConverter}}" />
+      <TextBlock Text="{Binding Source={StaticResource Locator}, Path=Menu.SelectedParticipant.Fuel, UpdateSourceTrigger=PropertyChanged}"
+                 HorizontalAlignment="Center" VerticalAlignment="Center" />
+    </Grid>
+
+    <!-- Refuel Button -->
+    <Button Width="100" Height="32" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+      <StackPanel Orientation="Horizontal">
+        <Image Source="Images/Menu/fuel.png"/>
+        <TextBlock VerticalAlignment="Center">nachtanken</TextBlock>
+      </StackPanel>
+      <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Click" >
+          <com:EventToCommand CommandParameter="{Binding}" Command="{Binding FillTankCommand}"/>
+        </i:EventTrigger>
+      </i:Interaction.Triggers>
+    </Button>
+  </Grid>
+</UserControl>

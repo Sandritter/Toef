@@ -1,0 +1,89 @@
+﻿<!--
+    Window for server connection and world creation/deletion
+    Also allows the user to join a selected world with a choosable user name
+-->
+<Window x:Class="UI.ServerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ServerWindow"
+        xmlns:meinprojekt="clr-namespace:UI"
+        WindowStyle="None" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized">
+  <Window.Background>
+    <ImageBrush ImageSource="Images/Misc/wyd.png" />
+  </Window.Background>
+
+  <Grid DataContext="{Binding Source={StaticResource Locator}, Path=Server}" Width="500" Height="500" HorizontalAlignment="Center">
+    <!-- Server management -->
+    <Button Command="{Binding ExitCommand}" Width="25" Height="25" FontSize="15" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="2">
+      <StackPanel>
+        <Image Source="Images/Menu/shutdown.png"/>
+      </StackPanel>
+    </Button>
+    <Border CornerRadius="20,20,20,20" BorderBrush="Black" Background="Black" Opacity="0.7"/>
+    <StackPanel Margin="25,25,25,25">
+      <!-- change lobbyserver START-->
+      <DockPanel Margin="0,0,0,30" Width="450">
+        <TextBlock Text="Lobbyserver:   "  Foreground="White" FontSize="16" DockPanel.Dock="Left" VerticalAlignment="Bottom"/>
+        <TextBox Text="{Binding LobbyName, UpdateSourceTrigger=PropertyChanged}" Width="110" DockPanel.Dock="Left">
+          <TextBox.InputBindings>
+            <KeyBinding Command="{Binding ChangeLobby, UpdateSourceTrigger=PropertyChanged}" Key="Enter"/>
+          </TextBox.InputBindings>
+        </TextBox>
+        <Button Content="Connect" Command="{Binding ChangeLobby, UpdateSourceTrigger=PropertyChanged}" Width="64" DockPanel.Dock="Left" />
+        <StackPanel Width="100" DockPanel.Dock="Right" Orientation="Horizontal">
+          <Slider Minimum="0" Maximum="100" Width="75" Height="25" IsSnapToTickEnabled="True"
+                  Value="{Binding MusicVolume, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+          <!-- Sound settings button -->
+          <Button Command="{Binding SkipSongCommand}" Width="25" Height="25">
+            <Image Source="Images/Menu/skipButton.png" />
+          </Button>
+        </StackPanel>
+        <Ellipse Height="15" Stroke="Black" Width="15" Margin="10,0,0,0" StrokeThickness="0">
+          <Ellipse.Fill>
+            <RadialGradientBrush>
+              <GradientStop Color="{Binding Color2}" Offset="0"/>
+              <GradientStop Color="{Binding Color1}" Offset="1"/>
+            </RadialGradientBrush>
+          </Ellipse.Fill>
+          <Ellipse.Effect>
+            <DropShadowEffect Color="{Binding Color1}" ShadowDepth="0" BlurRadius="20" Direction="0"/>
+          </Ellipse.Effect>
+        </Ellipse>
+        <Image Source="Images/Menu/spacer.png" Height="25" />
+      </DockPanel>
+      <!-- change lobbyserver END-->
+
+      <TextBlock Text="Serverauswahl"  Foreground="White" FontSize="25"/>
+      <StackPanel Orientation="Horizontal">
+        <Button Content="Aktualisieren" Command="{Binding RefreshServerCommand, UpdateSourceTrigger=PropertyChanged}" Width="75"/>
+        <Button Content="Löschen" Command="{Binding DeleteServerCommand, UpdateSourceTrigger=PropertyChanged}" Width="75"/>
+        <TextBox Text="{Binding NewServer, UpdateSourceTrigger=PropertyChanged}" Width="200">
+          <TextBox.InputBindings>
+            <KeyBinding Command="{Binding AddServerCommand, UpdateSourceTrigger=PropertyChanged}" Key="Enter"/>
+          </TextBox.InputBindings>
+        </TextBox>
+        <Button Content="Hinzufügen" Command="{Binding AddServerCommand, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
+      </StackPanel>
+
+      <!-- List of available servers-->
+      <ListBox DataContext="{Binding Source={StaticResource Locator}, Path=Server}" SelectedValue="{Binding SelectedServer}" SelectedIndex="{Binding SelectedIndex, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Height="200" ItemsSource="{Binding ServerList, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+
+      <!-- Labels for error messages-->
+      <Label Content="{Binding UserNameError, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Foreground="Red"/>
+      <Label Content="{Binding DeleteError, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Foreground="Red"/>
+
+      <!-- Join stuff -->
+      <StackPanel Orientation="Horizontal">
+        <TextBlock Text="Username:  "  Foreground="White" FontSize="16" VerticalAlignment="Bottom"/>
+        <TextBox Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" Width="270">
+          <TextBox.InputBindings>
+            <KeyBinding Command="{Binding JoinCommand}" Key="Enter"/>
+          </TextBox.InputBindings>
+        </TextBox>
+        <Button x:Name="Join" Content="Join Server" Command="{Binding JoinCommand}" Width="100"/>
+      </StackPanel>
+    </StackPanel>
+  </Grid>
+</Window>

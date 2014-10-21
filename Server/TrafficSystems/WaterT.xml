@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trafficSystem size="10">
+	<pathSystem type="Searoute">
+		<constants>
+			<constant name="C1">0</constant>
+			<constant name="C2">1</constant>
+			<constant name="C3">3</constant>
+			<constant name="C4">7</constant>
+			<constant name="C5">9</constant>
+			<constant name="C6">10</constant>
+		</constants>
+		
+		<points>
+			<point x = "C4" y = "C1" id="StartU"/>
+			<point x = "C3" y = "C1" id="EndU"/>
+			
+			<point x = "C1" y = "C3" id="StartL"/>
+			<point x = "C1" y = "C4" id="EndL"/>
+
+			<point x = "C6" y = "C4" id="StartR"/>
+			<point x = "C6" y = "C3" id="EndR"/>
+			
+			<point x = "C4" y = "C2" id="StartU1" />
+			<point x = "C3" y = "C2" id="EndU1"/>
+			
+			<point x = "C2" y = "C3" id="StartL1"/>
+			<point x = "C2" y = "C4" id="EndL1"/>
+			
+			<point x = "C5" y = "C4" id="StartR1"/>
+			<point x = "C5" y = "C3" id="EndR1"/>		
+		</points>
+		
+		<links>
+			<link start="StartU" end="StartU1" direction="AHEAD" id="U-U1"/>
+			<link start="EndU1" end="EndU" direction="AHEAD"/>
+			<link start="StartL" end="StartL1" direction="AHEAD" id="L-L1"/>
+			<link start="EndL1" end="EndL" direction="AHEAD"/>
+			<link start="StartR" end="StartR1" direction="AHEAD" id="R-R1"/>
+			<link start="EndR1" end="EndR" direction="AHEAD"/>
+			<link start="StartR1" end="EndL1" direction="AHEAD" id="R1-L1"/>
+			<link start="StartL1" end="EndR1" direction="AHEAD" id="L1-R1"/>
+			
+			<link start="StartU1" end="EndL1" direction="LEFT" id="U1-L1">
+				<controlPoint x ="C4" y = "C4"/>
+			</link>
+			<link start="StartU1" end="EndR1" direction="RIGHT" id="U1-R1">
+				<controlPoint x ="C4" y = "C3"/>
+			</link>			
+			<link start="StartR1" end="EndU1" direction="LEFT" id="R1-U1">
+				<controlPoint x ="C3" y = "C4"/>
+			</link>
+			<link start="StartL1" end="EndU1" direction="RIGHT" id="L1-U1">
+				<controlPoint x ="C3" y = "C3"/>
+			</link>
+		</links>
+		
+		<properties>
+			<pointProperties>
+				<attach toIDs="StartU,StartL,StartR">
+					<crossing>begin</crossing>
+				</attach>
+				<attach toIDs="EndU,EndL,EndR">
+					<crossing>end</crossing>
+				</attach>
+			</pointProperties>
+		</properties>
+	</pathSystem>
+</trafficSystem>

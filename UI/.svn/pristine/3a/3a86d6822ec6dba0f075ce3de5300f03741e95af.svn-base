@@ -1,0 +1,596 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D7A4C6F6-B190-4AB4-982C-A08EFAD8DA81}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UI</RootNamespace>
+    <AssemblyName>UI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>z:\win_data.V2\Desktop\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>8550428FE1DC6B4881BCD754BB6994D4FC24EEF3</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>UI_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>UI.App</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="Apache.NMS">
+      <HintPath>..\packages\Apache.NMS.1.6.0\lib\net40\Apache.NMS.dll</HintPath>
+    </Reference>
+    <Reference Include="Apache.NMS.ActiveMQ">
+      <HintPath>..\packages\Apache.NMS.ActiveMQ.1.6.0\lib\net40\Apache.NMS.ActiveMQ.dll</HintPath>
+    </Reference>
+    <Reference Include="EventStore">
+      <HintPath>..\packages\EventStore.3.2.0.29\lib\net40\EventStore.dll</HintPath>
+    </Reference>
+    <Reference Include="EventStore.Serialization.Json">
+      <HintPath>..\packages\EventStore.Serialization.Json.3.2.0.29\lib\net40\EventStore.Serialization.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras.WPF45">
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\net45\GalaSoft.MvvmLight.Extras.WPF45.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.WPF45">
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\net45\GalaSoft.MvvmLight.WPF45.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationUI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.104.3.3\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Builder\Interface\ISoundBuilder.cs" />
+    <Compile Include="Builder\SoundBuilder.cs" />
+    <Compile Include="Builder\InfoStringBuilder.cs" />
+    <Compile Include="Commands\ViewableCommand.cs" />
+    <Compile Include="Communication\Commands\Command.cs" />
+    <Compile Include="Communication\Commands\Interfaces\ICommand.cs" />
+    <Compile Include="Communication\Commands\NetworkCommand.cs" />
+    <Compile Include="Communication\Controller\ConsumerController.cs" />
+    <Compile Include="Communication\Controller\Interfaces\IConsumerController.cs" />
+    <Compile Include="Communication\Controller\Interfaces\IController.cs" />
+    <Compile Include="Communication\Controller\Interfaces\IProducerController.cs" />
+    <Compile Include="Communication\Controller\Interfaces\IRequestorController.cs" />
+    <Compile Include="Communication\Controller\ProducerController.cs" />
+    <Compile Include="Communication\Controller\RequestorController.cs" />
+    <Compile Include="Communication\Converter\NetworkConverter.cs" />
+    <Compile Include="Communication\Enums\NetworkEnums.cs" />
+    <Compile Include="Communication\Events\ChatEventArgs.cs" />
+    <Compile Include="Communication\Events\ClientEventArgs.cs" />
+    <Compile Include="Communication\Events\ParticipantEventArgs.cs" />
+    <Compile Include="Communication\Events\MapEventArgs.cs" />
+    <Compile Include="Communication\Events\ServerEventArgs.cs" />
+    <Compile Include="Communication\Events\TileEventArgs.cs" />
+    <Compile Include="Communication\Exceptions\ClientNotHostException.cs" />
+    <Compile Include="Communication\Exceptions\EndpointNotFoundException.cs" />
+    <Compile Include="Communication\Exceptions\IpAddressAlreadyExistsException.cs" />
+    <Compile Include="Communication\Exceptions\NoProducerExists.cs" />
+    <Compile Include="Communication\Exceptions\NoRequestorExists.cs" />
+    <Compile Include="Communication\Exceptions\ServerNameAlreadyExistsException.cs" />
+    <Compile Include="Communication\Exceptions\ServerNameNotExistsException.cs" />
+    <Compile Include="Communication\Exceptions\UsernameAlreadyExistsException.cs" />
+    <Compile Include="Communication\Helper\Utils.cs" />
+    <Compile Include="Communication\Consumer\Interfaces\IBuffer.cs" />
+    <Compile Include="Communication\Models\Interfaces\IClientInfo.cs" />
+    <Compile Include="Communication\Consumer\Interfaces\IConsumer.cs" />
+    <Compile Include="Communication\Converter\Interfaces\IConverter.cs" />
+    <Compile Include="Communication\Interfaces\INetwork.cs" />
+    <Compile Include="Communication\Models\Interfaces\IReceiver.cs" />
+    <Compile Include="Communication\Models\Receiver.cs" />
+    <Compile Include="Communication\Producer\Interfaces\IProducer.cs" />
+    <Compile Include="Communication\Requestor\BaseRequestor.cs" />
+    <Compile Include="Communication\Requestor\Interfaces\IRequestor.cs" />
+    <Compile Include="Communication\Models\Interfaces\ISend.cs" />
+    <Compile Include="Communication\Models\ChatMessage.cs" />
+    <Compile Include="Communication\Models\NewParticipant.cs" />
+    <Compile Include="Communication\Models\UpdateParticipant.cs" />
+    <Compile Include="Communication\Consumer\ActiveClientsConsumer.cs" />
+    <Compile Include="Communication\Consumer\ChatMessageConsumer.cs" />
+    <Compile Include="Communication\Consumer\KeepAliveConsumer.cs" />
+    <Compile Include="Communication\Consumer\ParticipantConsumer.cs" />
+    <Compile Include="Communication\Producer\RefuelProducer.cs" />
+    <Compile Include="Communication\Producer\ChatMessageProducer.cs" />
+    <Compile Include="Communication\Producer\DeleteParticipantProducer.cs" />
+    <Compile Include="Communication\Producer\KeepAliveProducer.cs" />
+    <Compile Include="Communication\Producer\ParticipantProducer.cs" />
+    <Compile Include="Communication\Requestor\ActiveClientService.cs" />
+    <Compile Include="Communication\Requestor\ActiveSimulationService.cs" />
+    <Compile Include="Communication\Requestor\CreateSimulationService.cs" />
+    <Compile Include="Communication\Requestor\DeleteSimulationService.cs" />
+    <Compile Include="Communication\Requestor\RegisterClientService.cs" />
+    <Compile Include="Controller\Interface\ISoundController.cs" />
+    <Compile Include="Controller\SoundController.cs" />
+    <Compile Include="Enums\CursorEnums.cs" />
+    <Compile Include="Enums\ParticipantEnums.cs" />
+    <Compile Include="Enums\SoundEnums.cs" />
+    <Compile Include="Enums\StateEnums.cs" />
+    <Compile Include="Enums\TileEnums.cs" />
+    <Compile Include="ExceptionScreenUserControl.xaml.cs">
+      <DependentUpon>ExceptionScreenUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\BoolToVisibleConverter.cs" />
+    <Compile Include="Helper\FuelBarColorConverter.cs" />
+    <Compile Include="Helper\MenuChanged.cs" />
+    <Compile Include="Helper\MiniMapConverter.cs" />
+    <Compile Include="Helper\ParticipantPosConverter.cs" />
+    <Compile Include="Helper\PositionConverter.cs" />
+    <Compile Include="Helper\VelocityBarColorConverter.cs" />
+    <Compile Include="LoadScreenUserControl.xaml.cs">
+      <DependentUpon>LoadScreenUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\Interface\ISoundManager.cs" />
+    <Compile Include="Manager\SoundManager.cs" />
+    <Compile Include="MiniMapUserControl.xaml.cs">
+      <DependentUpon>MiniMapUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Participant.cs" />
+    <Compile Include="Communication\Models\ClientPosition.cs" />
+    <Compile Include="Communication\Models\ConnectionData.cs" />
+    <Compile Include="Communication\Models\ViewTile.cs" />
+    <Compile Include="Communication\Network.cs" />
+    <Compile Include="Communication\Consumer\BaseConsumer.cs" />
+    <Compile Include="Communication\Consumer\HostDownConsumer.cs" />
+    <Compile Include="Communication\Producer\BaseProducer.cs" />
+    <Compile Include="Communication\Producer\ClientPositionProducer.cs" />
+    <Compile Include="Communication\Producer\LogoutProducer.cs" />
+    <Compile Include="Communication\Requestor\MapRequestHandler.cs" />
+    <Compile Include="Communication\Consumer\ViewTileConsumer.cs" />
+    <Compile Include="Communication\Producer\TileProducer.cs" />
+    <Compile Include="GuiUserControl.xaml.cs">
+      <DependentUpon>GuiUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\LinqToVisualTree.cs" />
+    <Compile Include="Helper\ScrollOffsetBinding.cs" />
+    <Compile Include="Helper\TilePosConverter.cs" />
+    <Compile Include="MenuUserControl.xaml.cs">
+      <DependentUpon>MenuUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\ObservableModelBase.cs" />
+    <Compile Include="Model\Map.cs" />
+    <Compile Include="Model\Menu.cs" />
+    <Compile Include="Model\ParticipantManager.cs" />
+    <Compile Include="Model\Repository.cs" />
+    <Compile Include="Model\Tile.cs" />
+    <Compile Include="Model\Viewable.cs" />
+    <Compile Include="Model\ViewportUpdater.cs" />
+    <Compile Include="ParticipantInfoUserControl.xaml.cs">
+      <DependentUpon>ParticipantInfoUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CursorRepository.cs" />
+    <Compile Include="Repositories\SoundRepository.cs" />
+    <Compile Include="ServerWindow.xaml.cs">
+      <DependentUpon>ServerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ClientFunctions\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\LobbyFunctions\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="UnitTest\RepositoryTest.cs" />
+    <Compile Include="UnitTest\TileTest.cs" />
+    <Compile Include="ViewModel\ChatViewModel.cs" />
+    <Compile Include="ViewModel\MapViewModel.cs" />
+    <Compile Include="ViewModel\MenuIcon.cs" />
+    <Compile Include="ViewModel\MenuViewModel.cs" />
+    <Compile Include="ViewModel\ServerViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="ViewModel\ZoomViewModel.cs" />
+    <Page Include="ExceptionScreenUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GuiUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LoadScreenUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Commands\ActionCommand.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="MenuUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MiniMapUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ParticipantInfoUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ServerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Libraries\Apache.NMS.1.6.0\Apache.NMS.1.6.0.nupkg" />
+    <None Include="Libraries\Apache.NMS.1.6.0\Apache.NMS.1.6.0.nuspec" />
+    <None Include="Libraries\Apache.NMS.ActiveMQ.1.6.0\Apache.NMS.ActiveMQ.1.6.0.nupkg" />
+    <None Include="Libraries\Apache.NMS.ActiveMQ.1.6.0\Apache.NMS.ActiveMQ.1.6.0.nuspec" />
+    <None Include="Libraries\EventStore.3.2.0.29\EventStore.3.2.0.29.nupkg" />
+    <None Include="Libraries\EventStore.3.2.0.29\EventStore.3.2.0.29.nuspec" />
+    <None Include="Libraries\EventStore.Serialization.Json.3.2.0.29\EventStore.Serialization.Json.3.2.0.29.nupkg" />
+    <None Include="Libraries\EventStore.Serialization.Json.3.2.0.29\EventStore.Serialization.Json.3.2.0.29.nuspec" />
+    <None Include="Libraries\Newtonsoft.Json.5.0.8\Newtonsoft.Json.5.0.8.nupkg" />
+    <None Include="Libraries\Newtonsoft.Json.5.0.8\Newtonsoft.Json.5.0.8.nuspec" />
+    <None Include="Libraries\Newtonsoft.Json.5.0.8\tools\install.ps1" />
+    <None Include="Libraries\NUnit.2.6.3\NUnit.2.6.3.nupkg" />
+    <None Include="Libraries\NUnit.2.6.3\NUnit.2.6.3.nuspec" />
+    <None Include="Libraries\repositories.config" />
+    <None Include="Libraries\RestSharp.104.3.3\RestSharp.104.3.3.nupkg" />
+    <None Include="Libraries\RestSharp.104.3.3\RestSharp.104.3.3.nuspec" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Service References\ClientFunctions\ClientFunctionService.wsdl" />
+    <None Include="Service References\LobbyFunctions\LobbyFunctionsService1.wsdl" />
+    <None Include="Service References\LobbyFunctions\lobbyService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LobbyFunctions\UI.LobbyFunctions.getServerListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="UI_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ClientFunctions\" />
+    <WCFMetadataStorage Include="Service References\LobbyFunctions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientFunctions\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientFunctions\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientFunctions\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Misc\wyd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LobbyFunctions\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LobbyFunctions\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LobbyFunctions\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cursor\tow_truck.cur" />
+    <Resource Include="Images\TileImgs\House.png" />
+    <Resource Include="Images\TileImgs\None.png" />
+    <Resource Include="Images\TileImgs\Soil.png" />
+    <Resource Include="Images\TileImgs\Forest1.png" />
+    <Resource Include="Images\TileImgs\Forest2.png" />
+    <Resource Include="Images\TileImgs\Grass.png" />
+    <Resource Include="Images\TileImgs\StreetBridge.png" />
+    <Resource Include="Images\TileImgs\StreetCrossing.png" />
+    <Resource Include="Images\TileImgs\StreetCurve.png" />
+    <Resource Include="Images\TileImgs\StreetStraight.png" />
+    <Resource Include="Images\TileImgs\StreetT.png" />
+    <Resource Include="Images\TileImgs\StreetZebra.png" />
+    <Resource Include="Images\TileImgs\transparent.png" />
+    <Resource Include="Images\TileImgs\WaterCrossing.png" />
+    <Resource Include="Images\TileImgs\WaterCurve.png" />
+    <Resource Include="Images\TileImgs\WaterStraight.png" />
+    <Resource Include="Images\TileImgs\WaterT.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Undamaged\CabrioBlue.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Undamaged\CabrioBrown.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Undamaged\CabrioGreen.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Undamaged\CabrioRed.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Undamaged\CabrioSilver.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Undamaged\CabrioYellow.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Undamaged\CabrioPink.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Undamaged\LimoBlack.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Undamaged\LimoBlue.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Undamaged\LimoGruen.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Undamaged\LimoOrange.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Undamaged\LimoRed.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Undamaged\LimoSilver.png" />
+    <Resource Include="Images\ParticipantImgs\None.png" />
+    <Resource Include="Images\ParticipantImgs\Ship\Undamaged\Boat.png" />
+    <Resource Include="Images\ParticipantImgs\Ship\Undamaged\Kanu.png" />
+    <Resource Include="Images\Menu\abschleppButton.png" />
+    <Resource Include="Images\Menu\bulldozerButton.png" />
+    <Resource Include="Images\Menu\rotateButton.png" />
+    <Resource Include="Images\Menu\shutdown.png" />
+    <Resource Include="Images\Menu\chatButton.png" />
+    <Resource Include="Images\Menu\exitButton.png" />
+    <Resource Include="Images\Menu\soundButton.png" />
+    <Resource Include="Images\Menu\userListButton.png" />
+    <Resource Include="Images\Menu\skipButton.png" />
+    <Resource Include="Images\Menu\zoom_in.png" />
+    <Resource Include="Images\Menu\zoom_out.png" />
+    <Resource Include="Images\Menu\menuButtonCar.png" />
+    <Resource Include="Images\Menu\menuButtonLandscape.png" />
+    <Resource Include="Images\Menu\menuButtonStreet.png" />
+    <Resource Include="Images\Menu\fuel.png" />
+    <Resource Include="Images\Menu\aggressiveDriver.png" />
+    <Resource Include="Images\Menu\calmDriver.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Damaged\cabrioBlue.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Damaged\cabrioBrown.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Damaged\cabrioGreen.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Damaged\cabrioPink.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Damaged\cabrioRed.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Damaged\cabrioSilver.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Damaged\cabrioYellow.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Damaged\kanuRed.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Damaged\limoBlue.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Damaged\limoGreen.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Damaged\limoOrange.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Damaged\limoRed.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Damaged\limoRedWine.png" />
+    <Resource Include="Images\ParticipantImgs\Car\Damaged\limoSchwarz.png" />
+    <Resource Include="Images\ParticipantImgs\Ship\Damaged\Kanu.png" />
+    <Resource Include="Images\ParticipantImgs\Ship\Damaged\Boat.png" />
+    <Content Include="Sounds\Background\InGame\InGame_1.mp3" />
+    <Content Include="Sounds\Background\InGame\InGame_2.mp3" />
+    <Content Include="Sounds\Background\InGame\InGame_3.mp3" />
+    <Content Include="Sounds\Background\InGame\InGame_4.mp3" />
+    <Content Include="Sounds\Background\InGame\InGame_5.mp3" />
+    <Content Include="Sounds\Background\InGame\InGame_6.mp3" />
+    <Content Include="Sounds\Background\Menu\Menu_1.mp3" />
+    <Content Include="Sounds\Background\Menu\Menu_2.mp3" />
+    <Content Include="Sounds\Background\Menu\Menu_3.mp3" />
+    <Content Include="Sounds\Background\Menu\Menu_4.mp3" />
+    <Content Include="Sounds\Effects\CrashCar.wav" />
+    <Content Include="Sounds\Effects\DeleteParticipant.wav" />
+    <Content Include="Sounds\Effects\DeleteTile.wav" />
+    <Content Include="Sounds\Effects\GetChatmessage.wav" />
+    <Content Include="Sounds\Effects\PlaceCar.wav" />
+    <Content Include="Sounds\Effects\PlaceShip.wav" />
+    <Content Include="Sounds\Effects\PlaceTile.wav" />
+    <Content Include="Sounds\Effects\SelectCar.wav" />
+    <Content Include="Sounds\Effects\SelectShip.wav" />
+    <Content Include="Sounds\Place\placeCar.wav" />
+    <Content Include="Sounds\Place\placeTile.wav" />
+    <Resource Include="Images\Menu\spacer.png" />
+    <Resource Include="Images\Cursor\bulldozer.cur" />
+    <Resource Include="Images\Cars\cabrioBlue.png" />
+    <Resource Include="Images\Cars\cabrioBrown.png" />
+    <Resource Include="Images\Cars\cabrioGreen.png" />
+    <Resource Include="Images\Cars\cabrioHulkHogenPink.png" />
+    <Resource Include="Images\Cars\cabrioRed.png" />
+    <Resource Include="Images\Cars\cabrioSilver.png" />
+    <Resource Include="Images\Cars\cabrioYellow.png" />
+    <Resource Include="Images\Cars\limoBlack.png" />
+    <Resource Include="Images\Cars\limoBlue.png" />
+    <Resource Include="Images\Cars\limoGruen.png" />
+    <Resource Include="Images\Cars\limoOrange.png" />
+    <Resource Include="Images\Cars\limoRed.png" />
+    <Resource Include="Images\Cars\limoSilver.png" />
+    <Content Include="Libraries\Apache.NMS.1.6.0\lib\net20-cf\Apache.NMS.dll" />
+    <Content Include="Libraries\Apache.NMS.1.6.0\lib\net20-cf\Apache.NMS.pdb" />
+    <Content Include="Libraries\Apache.NMS.1.6.0\lib\net20\Apache.NMS.dll" />
+    <Content Include="Libraries\Apache.NMS.1.6.0\lib\net20\Apache.NMS.pdb" />
+    <Content Include="Libraries\Apache.NMS.1.6.0\lib\net35\Apache.NMS.dll" />
+    <Content Include="Libraries\Apache.NMS.1.6.0\lib\net35\Apache.NMS.pdb" />
+    <Content Include="Libraries\Apache.NMS.1.6.0\lib\net40\Apache.NMS.dll" />
+    <Content Include="Libraries\Apache.NMS.1.6.0\lib\net40\Apache.NMS.pdb" />
+    <Resource Include="Libraries\Apache.NMS.1.6.0\LICENSE.txt" />
+    <Resource Include="Libraries\Apache.NMS.1.6.0\NOTICE.txt" />
+    <Content Include="Libraries\Apache.NMS.ActiveMQ.1.6.0\lib\net20\Apache.NMS.ActiveMQ.dll" />
+    <Content Include="Libraries\Apache.NMS.ActiveMQ.1.6.0\lib\net20\Apache.NMS.ActiveMQ.pdb" />
+    <Content Include="Libraries\Apache.NMS.ActiveMQ.1.6.0\lib\net35\Apache.NMS.ActiveMQ.dll" />
+    <Content Include="Libraries\Apache.NMS.ActiveMQ.1.6.0\lib\net35\Apache.NMS.ActiveMQ.pdb" />
+    <Content Include="Libraries\Apache.NMS.ActiveMQ.1.6.0\lib\net40\Apache.NMS.ActiveMQ.dll" />
+    <Content Include="Libraries\Apache.NMS.ActiveMQ.1.6.0\lib\net40\Apache.NMS.ActiveMQ.pdb" />
+    <Resource Include="Libraries\Apache.NMS.ActiveMQ.1.6.0\LICENSE.txt" />
+    <Resource Include="Libraries\Apache.NMS.ActiveMQ.1.6.0\NOTICE.txt" />
+    <Content Include="Libraries\EventStore.3.2.0.29\lib\net40\EventStore.dll" />
+    <Content Include="Libraries\EventStore.3.2.0.29\lib\net40\EventStore.pdb" />
+    <Resource Include="Libraries\EventStore.3.2.0.29\lib\net40\EventStore.xml" />
+    <Content Include="Libraries\EventStore.Serialization.Json.3.2.0.29\lib\net40\EventStore.Serialization.Json.dll" />
+    <Content Include="Libraries\EventStore.Serialization.Json.3.2.0.29\lib\net40\EventStore.Serialization.Json.pdb" />
+    <Content Include="Libraries\Newtonsoft.Json.5.0.8\lib\net20\Newtonsoft.Json.dll" />
+    <Resource Include="Libraries\Newtonsoft.Json.5.0.8\lib\net20\Newtonsoft.Json.xml" />
+    <Content Include="Libraries\Newtonsoft.Json.5.0.8\lib\net35\Newtonsoft.Json.dll" />
+    <Resource Include="Libraries\Newtonsoft.Json.5.0.8\lib\net35\Newtonsoft.Json.xml" />
+    <Content Include="Libraries\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll" />
+    <Resource Include="Libraries\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.xml" />
+    <Content Include="Libraries\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll" />
+    <Resource Include="Libraries\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.xml" />
+    <Content Include="Libraries\Newtonsoft.Json.5.0.8\lib\netcore45\Newtonsoft.Json.dll" />
+    <Resource Include="Libraries\Newtonsoft.Json.5.0.8\lib\netcore45\Newtonsoft.Json.xml" />
+    <Content Include="Libraries\Newtonsoft.Json.5.0.8\lib\portable-net40+sl4+wp7+win8\Newtonsoft.Json.dll" />
+    <Resource Include="Libraries\Newtonsoft.Json.5.0.8\lib\portable-net40+sl4+wp7+win8\Newtonsoft.Json.xml" />
+    <Content Include="Libraries\Newtonsoft.Json.5.0.8\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll" />
+    <Resource Include="Libraries\Newtonsoft.Json.5.0.8\lib\portable-net45+wp80+win8\Newtonsoft.Json.xml" />
+    <Content Include="Libraries\NUnit.2.6.3\lib\nunit.framework.dll" />
+    <Resource Include="Libraries\NUnit.2.6.3\lib\nunit.framework.xml" />
+    <Resource Include="Libraries\NUnit.2.6.3\license.txt" />
+    <Content Include="Libraries\RestSharp.104.3.3\lib\net35-client\RestSharp.dll" />
+    <Resource Include="Libraries\RestSharp.104.3.3\lib\net35-client\RestSharp.xml" />
+    <Content Include="Libraries\RestSharp.104.3.3\lib\net35\RestSharp.dll" />
+    <Resource Include="Libraries\RestSharp.104.3.3\lib\net35\RestSharp.xml" />
+    <Content Include="Libraries\RestSharp.104.3.3\lib\net4-client\RestSharp.dll" />
+    <Resource Include="Libraries\RestSharp.104.3.3\lib\net4-client\RestSharp.xml" />
+    <Content Include="Libraries\RestSharp.104.3.3\lib\net4\RestSharp.dll" />
+    <Resource Include="Libraries\RestSharp.104.3.3\lib\net4\RestSharp.xml" />
+    <Content Include="Libraries\RestSharp.104.3.3\lib\sl4-wp71\RestSharp.WindowsPhone.dll" />
+    <Resource Include="Libraries\RestSharp.104.3.3\lib\sl4-wp71\RestSharp.WindowsPhone.xml" />
+    <Content Include="Libraries\RestSharp.104.3.3\lib\sl4\RestSharp.Silverlight.dll" />
+    <Resource Include="Libraries\RestSharp.104.3.3\lib\sl4\RestSharp.Silverlight.xml" />
+    <Resource Include="Libraries\RestSharp.104.3.3\readme.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

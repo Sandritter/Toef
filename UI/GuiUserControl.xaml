@@ -1,0 +1,327 @@
+﻿<!--
+    Container for all elements shown in the graphical user interface
+-->
+<UserControl x:Class="UI.GuiUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:com="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF45"
+             xmlns:uc="http://www.quickzip.org/UserControls"
+             xmlns:local="clr-namespace:Util"
+             xmlns:meinprojekt="clr-namespace:UI"
+             mc:Ignorable="d"
+             DataContext="{Binding Source={StaticResource Locator}, Path=Menu}">
+
+  <UserControl.Resources>
+    <!-- Colors -->
+    <SolidColorBrush x:Key="mainBackground" Color="#333333" Opacity="0.7"/>
+    <SolidColorBrush x:Key="infoFont" Color="#DDDDDD"/>
+
+    <!-- Converter -->
+    <meinprojekt:MiniMapConverter x:Key="MiniMapConverter" />
+    <meinprojekt:BoolToVisConverter x:Key="BoolToVisConverter" />
+    <meinprojekt:VelocityBarColorConverter x:Key="VelocityBarColorConverter"/>
+    <meinprojekt:FuelBarColorConverter x:Key="FuelBarColorConverter"/>
+
+    <!-- expand/collapse animation of the tile menu -->
+    <Style x:Key="tileMenuExpand" TargetType="StackPanel">
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding Path=MenuExpanded}" Value="True">
+          <DataTrigger.EnterActions>
+            <BeginStoryboard>
+              <Storyboard TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                          AccelerationRatio=".5" DecelerationRatio=".5" Duration="0:0:0.5">
+                <DoubleAnimation From="250" To="-250" />
+              </Storyboard>
+            </BeginStoryboard>
+          </DataTrigger.EnterActions>
+          <DataTrigger.ExitActions>
+            <BeginStoryboard>
+              <Storyboard TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                          AccelerationRatio=".5" DecelerationRatio=".5" Duration="0:0:0.5">
+                <DoubleAnimation From="0" To="500" />
+              </Storyboard>
+            </BeginStoryboard>
+          </DataTrigger.ExitActions>
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+
+    <!-- expand/collapse animation of the participant info -->
+    <Style x:Key="participantInfoExpand" TargetType="Border">
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding Path=ParticipantInfoExpanded}" Value="True">
+          <DataTrigger.EnterActions>
+            <BeginStoryboard>
+              <Storyboard TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                          AccelerationRatio=".5" DecelerationRatio=".5" Duration="0:0:0.5">
+                <DoubleAnimation From="250" To="-250" />
+              </Storyboard>
+            </BeginStoryboard>
+          </DataTrigger.EnterActions>
+          <DataTrigger.ExitActions>
+            <BeginStoryboard>
+              <Storyboard TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                          AccelerationRatio=".5" DecelerationRatio=".5" Duration="0:0:0.5">
+                <DoubleAnimation From="0" To="500" />
+              </Storyboard>
+            </BeginStoryboard>
+          </DataTrigger.ExitActions>
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+  </UserControl.Resources>
+
+  <!-- Elements of the GUI -->
+  <Grid x:Name="GuiOverlay" Panel.ZIndex="4">
+
+    <!-- Start Exception Black Overlayer -->
+      <meinprojekt:ExceptionScreenUserControl Panel.ZIndex="10" Visibility="{Binding Source={StaticResource Locator}, Path=Menu.ExceptionVisibility, Converter={StaticResource BoolToVisConverter}}"/>
+
+      <DockPanel  LastChildFill="False">
+      <!-- Upper area of the GUI -->
+      <DockPanel LastChildFill="True" DockPanel.Dock="Top" DataContext="{Binding Source={StaticResource Locator}, Path=Menu}">
+        <StackPanel Height="250" Orientation="Vertical" DockPanel.Dock="Left" VerticalAlignment="Top">
+          <!-- Various buttons -->
+          <StackPanel Height="50" Orientation="Horizontal">
+            <!-- Logout button -->
+            <Button Width="48" Height="48" Command="{Binding Source={StaticResource Locator}, Path=Map.LogoutCommand}">
+              <StackPanel>
+                <Image Source="Images/Menu/exitButton.png"/>
+              </StackPanel>
+            </Button>
+            <!-- Client list button -->
+            <Button Width="48" Height="48">
+              <StackPanel>
+                <Image Source="Images/Menu/userListButton.png"/>
+                <TextBlock Name="clientList" Visibility="Hidden">client list</TextBlock>
+              </StackPanel>
+              <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click" >
+                  <com:EventToCommand CommandParameter="{Binding Text, ElementName=clientList}" Command="{Binding ShowSettingsCommand}"/>
+                </i:EventTrigger>
+              </i:Interaction.Triggers>
+            </Button>
+            <!-- Chat button -->
+            <Button Width="48" Height="48">
+              <StackPanel>
+                <Image Source="Images/Menu/chatButton.png"/>
+                <TextBlock Name="chat" Visibility="Hidden">chat</TextBlock>
+              </StackPanel>
+              <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click" >
+                  <com:EventToCommand CommandParameter="{Binding Text, ElementName=chat}" Command="{Binding ShowSettingsCommand}"/>
+                </i:EventTrigger>
+              </i:Interaction.Triggers>
+            </Button>
+            <!-- Sound settings button -->
+            <Button Width="48" Height="48">
+              <StackPanel>
+                <Image Source="Images/Menu/soundButton.png"/>
+                <TextBlock Name="soundSettings" Visibility="Hidden">sound settings</TextBlock>
+              </StackPanel>
+              <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click" >
+                  <com:EventToCommand CommandParameter="{Binding Text, ElementName=soundSettings}" Command="{Binding ShowSettingsCommand}"/>
+                </i:EventTrigger>
+              </i:Interaction.Triggers>
+            </Button>
+          </StackPanel>
+          <!-- Client list start -->
+          <Grid Height="200" Width="192">
+            <Grid.Style>
+              <Style TargetType="Grid">
+                <Setter Property="Visibility" Value="Hidden" />
+                <Style.Triggers>
+                  <DataTrigger Binding="{Binding TopMenuExpanded}" Value="client list">
+                    <Setter Property="Visibility" Value="Visible" />
+                  </DataTrigger>
+                </Style.Triggers>
+              </Style>
+            </Grid.Style>
+            <!-- ClientList uses ObservableCollection <String> Players to display currently playing clients-->
+            <Border BorderBrush="Cornsilk" CornerRadius="1,1,1,1" BorderThickness="2,2,2,2" Background="{StaticResource mainBackground}">
+              <ListBox Background="Transparent" DataContext="{Binding Source={StaticResource Locator}, Path=Chat}"
+											 ItemsSource="{Binding Players, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                  <DataTemplate>
+                    <Label Foreground="White" Content="{Binding}" />
+                  </DataTemplate>
+                </ListBox.ItemTemplate>
+              </ListBox>
+              <Border.BitmapEffect>
+                <DropShadowBitmapEffect Color="Black" ShadowDepth="3" Softness="2" />
+              </Border.BitmapEffect>
+            </Border>
+          </Grid>
+          <!-- Client list end-->
+
+          <!-- Chat window start-->
+          <Grid Height="200" Width="192">
+            <Grid.RenderTransform>
+              <TranslateTransform Y="-200" />
+            </Grid.RenderTransform>
+            <Grid.Style>
+              <Style TargetType="Grid">
+                <Setter Property="Visibility" Value="Hidden" />
+                <Style.Triggers>
+                  <DataTrigger Binding="{Binding TopMenuExpanded}" Value="chat">
+                    <Setter Property="Visibility" Value="Visible" />
+                  </DataTrigger>
+                </Style.Triggers>
+              </Style>
+            </Grid.Style>
+
+            <StackPanel>
+                <!-- Chatlog is stored in Variable Chatlog in ChatViewModel -->
+              <Border BorderBrush="Cornsilk" CornerRadius="1,1,1,1" BorderThickness="2,2,2,2" Background="{StaticResource mainBackground}">
+                <ScrollViewer Background="Transparent" Height="170" VerticalScrollBarVisibility="Auto" local:ScrollViewerBinding.VerticalOffset="{Binding Source={StaticResource Locator}, Path=Chat.VerticalScrollOffset, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                  <TextBlock Foreground="White" FontWeight="SemiBold" FontSize="12" Text="{Binding Source={StaticResource Locator}, Path=Chat.Chatlog, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" Height="Auto" TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
+                </ScrollViewer>
+                <Border.BitmapEffect>
+                  <DropShadowBitmapEffect Color="Black" ShadowDepth="3" Softness="2" />
+                </Border.BitmapEffect>
+              </Border>
+              <TextBox Height="25" DataContext="{Binding Source={StaticResource Locator}, Path=Chat}" Text="{Binding CurrentChatText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" >
+                <TextBox.InputBindings>
+                  <KeyBinding Key="Enter" Command="{Binding EnterChatCommand}" />
+                </TextBox.InputBindings>
+              </TextBox>
+            </StackPanel>
+          </Grid>
+          <!-- Chat window end-->
+
+          <!-- Sound settings start -->
+          <Grid Height="40" Width="192">
+            <Grid.RenderTransform>
+              <TranslateTransform Y="-400" />
+            </Grid.RenderTransform>
+            <Grid.Style>
+              <Style TargetType="Grid">
+                <Setter Property="Visibility" Value="Hidden" />
+                <Style.Triggers>
+                  <DataTrigger Binding="{Binding TopMenuExpanded}" Value="sound settings">
+                    <Setter Property="Visibility" Value="Visible" />
+                  </DataTrigger>
+                </Style.Triggers>
+              </Style>
+            </Grid.Style>
+
+            <Border BorderBrush="Cornsilk" CornerRadius="1,1,1,1" BorderThickness="2,2,2,2" Background="{StaticResource mainBackground}">
+              <StackPanel Orientation="Horizontal">
+                <Slider Minimum="0" Maximum="100" Width="140" Height="32" Margin="5,7,5,0" IsSnapToTickEnabled="True"
+											Value="{Binding MusicVolume, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <!-- Sound settings button -->
+                <Button Width="32" Height="32">
+                  <Image Source="Images/Menu/skipButton.png"/>
+                  <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click" >
+                      <com:EventToCommand CommandParameter="" Command="{Binding SkipSongCommand}"/>
+                    </i:EventTrigger>
+                  </i:Interaction.Triggers>
+                </Button>
+              </StackPanel>
+            </Border>
+          </Grid>
+          <!-- Sound settings end -->
+        </StackPanel>
+
+        <!-- MiniMap -->
+        <StackPanel  DockPanel.Dock="Right">
+          <meinprojekt:MiniMapUserControl />
+        </StackPanel>
+
+        <!-- Spacer -->
+        <StackPanel Orientation="Vertical" Width="100" IsHitTestVisible ="False">
+          <Image Source="Images/Menu/spacer.png" />
+        </StackPanel>
+      </DockPanel>
+
+      <!-- Lower area of the GUI -->
+      <DockPanel LastChildFill="True" DockPanel.Dock="Bottom">
+        <!-- MenuCategory buttons 
+          EventTriggers on all buttons set newCategory and a MenuCategory state -->
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" VerticalAlignment="Bottom">
+          <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=Menu}" Orientation="Vertical">
+            <!-- Landscape tiles -->
+            <Button x:Name="Landscape" Width="60" Height="60">
+              <StackPanel>
+                <Image Source="Images/Menu/menuButtonLandscape.png"/>
+                <TextBlock Name="landscape" Foreground="Black" FontSize="30" Visibility="Hidden">L</TextBlock>
+              </StackPanel>
+              <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click" >
+                  <com:EventToCommand CommandParameter="{Binding Text, ElementName=landscape}" Command="{Binding SelectCategoryCommand}"/>
+                </i:EventTrigger>
+              </i:Interaction.Triggers>
+            </Button>
+            <!-- Street tiles -->
+            <Button x:Name="Street" Width="60" Height="60">
+              <StackPanel>
+                <Image Source="Images/Menu/menuButtonStreet.png"/>
+                <TextBlock Name="tiles" Foreground="Black" FontSize="30" Visibility="Hidden">S</TextBlock>
+              </StackPanel>
+              <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click" >
+                  <com:EventToCommand CommandParameter="{Binding Text, ElementName=tiles}" Command="{Binding SelectCategoryCommand}"/>
+                </i:EventTrigger>
+              </i:Interaction.Triggers>
+            </Button>
+            <!-- Participants -->
+            <Button x:Name="Cars" Width="60" Height="60">
+              <StackPanel>
+                <Image Source="Images/Menu/menuButtonCar.png"/>
+                <TextBlock Name="cars" Foreground="Black" FontSize="30" Visibility="Hidden">C</TextBlock>
+              </StackPanel>
+              <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click" >
+                  <com:EventToCommand CommandParameter="{Binding Text, ElementName=cars}" Command="{Binding SelectCategoryCommand}"/>
+                </i:EventTrigger>
+              </i:Interaction.Triggers>
+            </Button>
+          </StackPanel>
+        </StackPanel>
+
+        <!-- Tile Buttons -->
+        <StackPanel Style="{StaticResource tileMenuExpand}" DockPanel.Dock="Left" VerticalAlignment="Bottom">
+          <StackPanel.RenderTransform>
+            <TranslateTransform />
+          </StackPanel.RenderTransform>
+          <meinprojekt:MenuUserControl />
+        </StackPanel>
+
+        <!-- Zoom Slider -->
+        <StackPanel Orientation="Horizontal" Margin="20,0,0,20" Height="40" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+          <Image Source="Images/Menu/zoom_out.png" Width="32" Height="32" />
+          <Slider DataContext="{Binding Source={StaticResource Locator}, Path=Zoom}" HorizontalAlignment="Left"
+											Margin="0,10,0,0"
+											VerticalAlignment="Bottom"
+											Height="32" Width="250"
+											Minimum="{Binding MinScale, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+											Maximum="{Binding MaxScale, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+											Value="{Binding Scale, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+											TickFrequency="0.2"/>
+          <Image Source="Images/Menu/zoom_in.png" Width="32" Height="32" />
+        </StackPanel>
+
+        <!--Participant Info Window-->
+        <Border Width="192" Height="180" DockPanel.Dock="Right" VerticalAlignment="Bottom" BorderBrush="Cornsilk" Background="{StaticResource mainBackground}"
+								CornerRadius="1,1,1,1" BorderThickness="2,2,2,2" Style="{StaticResource participantInfoExpand}">
+          <Border.RenderTransform>
+            <TranslateTransform Y="500" />
+          </Border.RenderTransform>
+          <meinprojekt:ParticipantInfoUserControl />
+        </Border>
+
+        <!-- Spacer -->
+        <StackPanel IsHitTestVisible ="False">
+          <Image Source="Images/Menu/spacer.png"/>
+        </StackPanel>
+
+      </DockPanel>
+    </DockPanel>
+  </Grid>
+
+</UserControl>

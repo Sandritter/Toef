@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://network/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="ClientFunctionService" targetNamespace="http://network/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types />
+  <message name="registerClient">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+  </message>
+  <message name="registerClientResponse" />
+  <message name="updateClientPosition">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:int" />
+    <part name="arg2" type="xsd:int" />
+  </message>
+  <message name="updateClientPositionResponse" />
+  <message name="updateClientTileCount">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:int" />
+    <part name="arg2" type="xsd:int" />
+  </message>
+  <message name="updateClientTileCountResponse" />
+  <portType name="ClientFunction">
+    <operation name="registerClient" parameterOrder="arg0 arg1">
+      <input wsam:Action="http://network/ClientFunction/registerClientRequest" message="tns:registerClient" />
+      <output wsam:Action="http://network/ClientFunction/registerClientResponse" message="tns:registerClientResponse" />
+    </operation>
+    <operation name="updateClientPosition" parameterOrder="arg0 arg1 arg2">
+      <input wsam:Action="http://network/ClientFunction/updateClientPositionRequest" message="tns:updateClientPosition" />
+      <output wsam:Action="http://network/ClientFunction/updateClientPositionResponse" message="tns:updateClientPositionResponse" />
+    </operation>
+    <operation name="updateClientTileCount" parameterOrder="arg0 arg1 arg2">
+      <input wsam:Action="http://network/ClientFunction/updateClientTileCountRequest" message="tns:updateClientTileCount" />
+      <output wsam:Action="http://network/ClientFunction/updateClientTileCountResponse" message="tns:updateClientTileCountResponse" />
+    </operation>
+  </portType>
+  <binding name="ClientFunctionPortBinding" type="tns:ClientFunction">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="registerClient">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://network/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://network/" />
+      </output>
+    </operation>
+    <operation name="updateClientPosition">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://network/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://network/" />
+      </output>
+    </operation>
+    <operation name="updateClientTileCount">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://network/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://network/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ClientFunctionService">
+    <port name="ClientFunctionPort" binding="tns:ClientFunctionPortBinding">
+      <soap:address location="http://localhost:8080/clientService" />
+    </port>
+  </service>
+</definitions>

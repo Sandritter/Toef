@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trafficSystem size="10">
+	<pathSystem type="Street">
+		<constants>
+			<constant name="C1">0</constant>
+			<constant name="C2">1</constant>
+			<constant name="C3">3</constant>
+			<constant name="C4">7</constant>
+			<constant name="C5">9</constant>
+			<constant name="C6">10</constant>
+		</constants>
+		
+		<points>
+			<point x = "C4" y = "C1" id="StartU"/>
+			<point x = "C3" y = "C1" id="EndU"/>
+			
+			<point x = "C1" y = "C3" id="StartL"/>
+			<point x = "C1" y = "C4" id="EndL"/>
+			
+			<point x = "C3" y = "C6" id="StartO"/>
+			<point x = "C4"  y = "C6" id="EndO"/>
+			
+			<point x = "C6" y = "C4" id="StartR"/>
+			<point x = "C6" y = "C3" id="EndR"/>
+			
+			<point x = "C4" y = "C2" id="StartU1" />
+			<point x = "C3" y = "C2" id="EndU1"/>
+			
+			<point x = "C3" y = "C5" id="StartO1"/>
+			<point x = "C4" y = "C5" id="EndO1"/>
+			
+			<point x = "C2" y = "C3" id="StartL1"/>
+			<point x = "C2" y = "C4" id="EndL1"/>
+			
+			<point x = "C5" y = "C4" id="StartR1"/>
+			<point x = "C5" y = "C3" id="EndR1"/>		
+		</points>
+		
+		<links>
+			<link start="StartU" end="StartU1" direction="AHEAD" id="U-U1"/>
+			<link start="EndU1" end="EndU" direction="AHEAD"/>
+			<link start="StartO" end="StartO1" direction="AHEAD" id="O-O1"/>
+			<link start="EndO1" end="EndO" direction="AHEAD"/>	
+			<link start="StartL" end="StartL1" direction="AHEAD" id="L-L1"/>
+			<link start="EndL1" end="EndL" direction="AHEAD"/>	
+			<link start="StartR" end="StartR1" direction="AHEAD" id="R-R1"/>
+			<link start="EndR1" end="EndR" direction="AHEAD"/>
+			<link start="StartU1" end="EndO1" direction="AHEAD" id="U1-O1"/>
+			<link start="StartO1" end="EndU1" direction="AHEAD" id="O1-U1"/>
+			<link start="StartR1" end="EndL1" direction="AHEAD" id="R1-L1"/>
+			<link start="StartL1" end="EndR1" direction="AHEAD" id="L1-R1"/>
+			
+			<link start="StartU1" end="EndL1" direction="LEFT" id="U1-L1">
+				<controlPoint x ="C4" y = "C4"/>
+			</link>
+			<link start="StartU1" end="EndR1" direction="RIGHT" id="U1-R1">
+				<controlPoint x ="C4" y = "C3"/>
+			</link>
+			<link start="StartO1" end="EndR1" direction="LEFT" id="O1-R1">
+				<controlPoint x ="C3" y = "C3"/>
+			</link>
+			<link start="StartO1" end="EndL1" direction="RIGHT" id="O1-L1">
+				<controlPoint x ="C3" y = "C4"/>
+			</link>
+			<link start="StartR1" end="EndU1" direction="LEFT" id="R1-U1">
+				<controlPoint x ="C3" y = "C4"/>
+			</link>
+			<link start="StartR1" end="EndO1" direction="RIGHT" id="R1-O1">
+				<controlPoint x ="C4" y = "C4"/>
+			</link>
+			<link start="StartL1" end="EndO1" direction="LEFT" id="L1-O1">
+				<controlPoint x ="C4" y = "C3"/>
+			</link>
+			<link start="StartL1" end="EndU1" direction="RIGHT" id="L1-U1">
+				<controlPoint x ="C3" y = "C3"/>
+			</link>
+		</links>
+		
+		<properties>
+			<pointProperties>
+				<attach toIDs="StartU,StartL,StartR,StartO">
+					<crossing>begin</crossing>
+				</attach>
+				<attach toIDs="EndU,EndL,EndR,EndO">
+					<crossing>end</crossing>
+				</attach>
+			</pointProperties>
+		</properties>
+	</pathSystem>
+	
+	
+</trafficSystem>

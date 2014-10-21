@@ -1,0 +1,25 @@
+﻿<!--
+    Hides the worlds map, while it's still partially loaded
+-->
+<UserControl x:Class="UI.LoadScreenUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d">
+  <DockPanel LastChildFill="True" Background="Gray">
+    <DockPanel LastChildFill="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+      <DockPanel.Background>
+        <RadialGradientBrush>
+          <GradientStop Color="#FF4DB44D"/>
+          <GradientStop Color="#FF1E681E" Offset="1"/>
+        </RadialGradientBrush>
+      </DockPanel.Background>
+      <TextBlock x:Name="Textfield" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center">
+        Map wird geladen, bitte warten...
+      </TextBlock>
+    </DockPanel>
+  </DockPanel>
+</UserControl>
+
+

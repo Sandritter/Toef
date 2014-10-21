@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trafficSystem size="10">
+	<pathSystem type="Street">	
+		<constants>
+			<constant name="C1">0</constant>
+			<constant name="C2">3</constant>
+			<constant name="C3">7</constant>
+			<constant name="C4">10</constant>
+		</constants>
+		
+		<points>
+			<point x = "C3" y = "C1" id="1"/>
+			<point x = "C3" y = "C4" id="2"/>
+			
+			<point x = "C2" y = "C4" id="3"/>
+			<point x = "C2" y = "C1" id="4"/>
+		</points>
+		
+		<links>
+			<link start="1" end="2" direction="AHEAD"/>
+			<link start="3" end="4" direction="AHEAD"/>
+		</links>
+	</pathSystem>
+</trafficSystem>

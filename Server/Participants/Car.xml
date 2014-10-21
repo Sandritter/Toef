@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<participants pathType="Street">
+	<default>
+		<maxVelocity unit="kmh">108</maxVelocity>
+		<maxAcceleration>4</maxAcceleration>
+		<fuel>70</fuel>
+		<length>5</length>
+		<width>3</width>
+	</default>
+	
+	<participant type="CabrioPink">
+		<maxVelocity unit="kmh">108</maxVelocity>
+		<maxAcceleration>4</maxAcceleration>
+		<fuel>70</fuel>
+		<length>5</length>
+		<width>3</width>
+	</participant>
+	
+	<participant type="CabrioBlue">
+		<maxVelocity unit="kmh">144</maxVelocity>
+		<maxAcceleration>40</maxAcceleration>
+		<fuel>60</fuel>
+		<length>5</length>
+		<width>3</width>
+	</participant>
+	
+	<participant type="CabrioGreen">
+		<maxVelocity unit="kmh">120</maxVelocity>
+		<maxAcceleration>15</maxAcceleration>
+		<fuel>80</fuel>
+		<length>5</length>
+		<width>3</width>
+	</participant>
+	
+	<participant type="CabrioSilver">
+		<maxVelocity unit="kmh">130</maxVelocity>
+		<maxAcceleration>25</maxAcceleration>
+		<fuel>90</fuel>
+		<length>5</length>
+		<width>3</width>
+	</participant>
+	
+	<participant type="CabrioYellow">
+		<maxVelocity unit="kmh">115</maxVelocity>
+		<maxAcceleration>10</maxAcceleration>
+		<fuel>100</fuel>
+		<length>5</length>
+		<width>3</width>
+	</participant>
+	
+	<participant type="LimoBlue">
+		<maxVelocity unit="kmh">70</maxVelocity>
+		<maxAcceleration>1</maxAcceleration>
+		<fuel>50</fuel>
+		<length>5</length>
+		<width>3</width>
+	</participant>
+</participants>

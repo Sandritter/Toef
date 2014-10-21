@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://soap.network/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="SOAPFunctionsService" targetNamespace="http://soap.network/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:9090/lobbyService?xsd=1" namespace="http://jaxb.dev.java.net/array" />
+    </xsd:schema>
+  </types>
+  <message name="createServer">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+  </message>
+  <message name="createServerResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="deleteServer">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+  </message>
+  <message name="deleteServerResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="getServerList" />
+  <message name="getServerListResponse">
+    <part xmlns:ns1="http://jaxb.dev.java.net/array" name="return" type="ns1:stringArray" />
+  </message>
+  <message name="registerClient">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+    <part name="arg2" type="xsd:string" />
+  </message>
+  <message name="registerClientResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="getClientList">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="getClientListResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <portType name="SOAPFunctions">
+    <operation name="createServer" parameterOrder="arg0 arg1">
+      <input wsam:Action="http://soap.network/SOAPFunctions/createServerRequest" message="tns:createServer" />
+      <output wsam:Action="http://soap.network/SOAPFunctions/createServerResponse" message="tns:createServerResponse" />
+    </operation>
+    <operation name="deleteServer" parameterOrder="arg0 arg1">
+      <input wsam:Action="http://soap.network/SOAPFunctions/deleteServerRequest" message="tns:deleteServer" />
+      <output wsam:Action="http://soap.network/SOAPFunctions/deleteServerResponse" message="tns:deleteServerResponse" />
+    </operation>
+    <operation name="getServerList">
+      <input wsam:Action="http://soap.network/SOAPFunctions/getServerListRequest" message="tns:getServerList" />
+      <output wsam:Action="http://soap.network/SOAPFunctions/getServerListResponse" message="tns:getServerListResponse" />
+    </operation>
+    <operation name="registerClient" parameterOrder="arg0 arg1 arg2">
+      <input wsam:Action="http://soap.network/SOAPFunctions/registerClientRequest" message="tns:registerClient" />
+      <output wsam:Action="http://soap.network/SOAPFunctions/registerClientResponse" message="tns:registerClientResponse" />
+    </operation>
+    <operation name="getClientList">
+      <input wsam:Action="http://soap.network/SOAPFunctions/getClientListRequest" message="tns:getClientList" />
+      <output wsam:Action="http://soap.network/SOAPFunctions/getClientListResponse" message="tns:getClientListResponse" />
+    </operation>
+  </portType>
+  <binding name="SOAPFunctionsPortBinding" type="tns:SOAPFunctions">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="createServer">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://soap.network/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://soap.network/" />
+      </output>
+    </operation>
+    <operation name="deleteServer">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://soap.network/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://soap.network/" />
+      </output>
+    </operation>
+    <operation name="getServerList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://soap.network/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://soap.network/" />
+      </output>
+    </operation>
+    <operation name="registerClient">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://soap.network/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://soap.network/" />
+      </output>
+    </operation>
+    <operation name="getClientList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://soap.network/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://soap.network/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="SOAPFunctionsService">
+    <port name="SOAPFunctionsPort" binding="tns:SOAPFunctionsPortBinding">
+      <soap:address location="http://localhost:9090/lobbyService" />
+    </port>
+  </service>
+</definitions>

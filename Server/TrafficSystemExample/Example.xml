@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trafficSystem size="10">
+	<pathSystem type="Street" layer=1>
+		<constants>
+			<constant name="C1">0</constant>
+			<constant name="C2">1</constant>
+			<constant name="C3">3</constant>
+			<constant name="C4">5</constant>
+			<constant name="C5">7</constant>
+		</constants>
+		
+		<points>
+			<point x = "C5" y = "C1" id="1"/>
+			<point x = "C5" y = "C4" id="2"/>
+			<point x = "C4" y = "C5" id="3"/>
+			<point x = "C1" y = "C5" id="4"/>
+			
+			<point x = "C1" y = "C3" id="5"/>
+			<point x = "C2" y = "C3" id="6"/>
+			<point x = "C3" y = "C2" id="7"/>
+			<point x = "C3" y = "C1" id="8"/>
+		</points>
+		
+		<links>
+			<link start="1" end="2" direction="AHEAD"/>
+			<link start="2" end="3" direction="AHEAD" id="Curve1">
+				<controlPoint x ="C5" y = "C5"/>
+			</link>
+			<link start="3" end="4" direction="AHEAD"/>
+			
+			<link start="5" end="6" direction="AHEAD"/>
+			<link start="6" end="7" direction="AHEAD" id="Curve2">
+				<controlPoint x ="C3" y = "C3"/>
+			</link>
+			<link start="7" end="8" direction="AHEAD"/>
+		</links>
+
+		<properties>
+			<linkProperties>
+				<attach toIDs="Curve1,Curve2">
+					<attention>curve</attention>
+				</attach>
+			</linkProperties>
+			
+			<pointProperties>
+				<attach toIDs="1">
+					<example>blub</example>
+				</attach>
+			</pointProperties>
+		</properties>
+	</pathSystem>
+</trafficSystem>

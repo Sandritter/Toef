@@ -1,0 +1,32 @@
+﻿<!--
+    Hides the worlds map, while it's still partially loaded
+-->
+<UserControl x:Class="UI.ExceptionScreenUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d">
+    <DockPanel LastChildFill="True" Background="Transparent">
+        <DockPanel LastChildFill="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <DockPanel.Background>
+                <RadialGradientBrush Opacity="0.35">
+                    <GradientStop Color="#FFD1D1D1" Offset="0.265"/>
+                    <GradientStop Color="#FF212121" Offset="1"/>
+                </RadialGradientBrush>
+            </DockPanel.Background>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock x:Name="Textfield" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    Server reagiert nicht mehr !!
+                </TextBlock>
+                <Button Command="{Binding Source={StaticResource Locator}, Path=Map.ShutdownCommand}" DockPanel.Dock="Bottom" Foreground="Black" FontSize="16">
+                    Programm beenden !!
+                </Button>
+            </StackPanel>
+            
+            
+        </DockPanel>
+    </DockPanel>
+</UserControl>
+
+

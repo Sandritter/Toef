@@ -1,0 +1,109 @@
+﻿<!--
+    Shows all settable tiles of the selected category
+    Also contains buttons for tile rotation, tile removal and participant removal
+-->
+<UserControl x:Class="UI.MenuUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF4"
+             xmlns:com="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF45"
+             xmlns:meinprojekt="clr-namespace:UI"
+             mc:Ignorable="d"
+             DataContext="{Binding Source={StaticResource Locator}, Path=Menu}">
+  <UserControl.Resources>
+    <!-- Colors -->
+    <SolidColorBrush x:Key="mainBackground" Color="#333333" Opacity="0.7"/>
+  </UserControl.Resources>
+
+  <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=Menu}" Orientation="Horizontal" HorizontalAlignment="Stretch">
+    <Border CornerRadius="5,5,5,5" Grid.RowSpan="2" BorderBrush="Cornsilk" BorderThickness="2,2,2,2" Height="180" Width="600" Background="{StaticResource mainBackground}">
+      <Border.Effect>
+        <DropShadowEffect Color="Gray" Opacity="0.5" />
+      </Border.Effect>
+      <Grid>
+        <!-- Container with the all settable tiles of a selectable category 
+          MenuIcons are the selectable tiles/participants that are shown in the menubox-->
+        <ScrollViewer Grid.Row="0" x:Name="TileScrollViewer" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                      HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
+          <ItemsControl Margin="10" DataContext="{Binding Source={StaticResource Locator}, Path=Menu}"
+                        ItemsSource="{Binding MenuIcons, UpdateSourceTrigger=PropertyChanged}">
+            <ItemsControl.Template>
+              <ControlTemplate TargetType="ItemsControl">
+                <ItemsPresenter/>
+              </ControlTemplate>
+            </ItemsControl.Template>
+
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate>
+                <UniformGrid Rows="1" Columns="{Binding MENU_LENGTH, Mode=TwoWay}"/>
+              </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Button HorizontalAlignment="Left" Margin="10,0,10,0">
+                  <Button.Template>
+                    <ControlTemplate>
+                      <Image Height="75" Width="75" Source="{Binding Path=BmImage, UpdateSourceTrigger=PropertyChanged}" RenderTransformOrigin="0.5,0.5" >
+                        <Image.BitmapEffect>
+                          <DropShadowBitmapEffect Color="Black" ShadowDepth="4" />
+                        </Image.BitmapEffect>
+                      </Image>
+                      <!--</Border>-->
+                    </ControlTemplate>
+                  </Button.Template>
+                  <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click" >
+                      <com:EventToCommand CommandParameter="{Binding}" Command="{Binding DataContext.ClickTileMenuCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"/>
+                    </i:EventTrigger>
+                  </i:Interaction.Triggers>
+                </Button>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </ScrollViewer>
+      </Grid>
+    </Border>
+    
+    <!-- Rotate/delete buttons -->
+    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+      <!-- rotate button-->
+      <Button Width="40" Height="40">
+        <StackPanel>
+          <Image Source="Images/Menu/rotateButton.png"/>
+        </StackPanel>
+        <i:Interaction.Triggers>
+          <i:EventTrigger EventName="Click" >
+            <com:EventToCommand CommandParameter="{Binding}" Command="{Binding Source={StaticResource Locator}, Path=Map.RotateCommand}"/>
+          </i:EventTrigger>
+        </i:Interaction.Triggers>
+      </Button>
+      <!-- bulldozer button-->
+      <Button Width="40" Height="40">
+        <StackPanel>
+          <Image Source="Images/Menu/bulldozerButton.png"/>
+        </StackPanel>
+        <i:Interaction.Triggers>
+          <i:EventTrigger EventName="Click" >
+            <com:EventToCommand CommandParameter="{Binding}" Command="{Binding BulldozerCommand}"/>
+          </i:EventTrigger>
+        </i:Interaction.Triggers>
+      </Button>
+      <!-- tow truck button-->
+      <Button Width="40" Height="40">
+        <StackPanel>
+          <Image Source="Images/Menu/abschleppButton.png"/>
+        </StackPanel>
+        <i:Interaction.Triggers>
+          <i:EventTrigger EventName="Click" >
+            <com:EventToCommand CommandParameter="{Binding}" Command="{Binding TowTruckCommand}"/>
+          </i:EventTrigger>
+        </i:Interaction.Triggers>
+      </Button>
+    </StackPanel>
+    
+  </StackPanel>
+</UserControl>

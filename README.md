@@ -7,6 +7,8 @@ How To
 ======
 
 Um den Server zu starten, ziehen Sie sich den im Repository befindlichen Ordner "Server" als Java-Projekt via Git in ihre Entwicklungsumgebung (Eclipse). Führen Sie anschließend im Ordner /Server/src/main/java/network/, die Datei Start.java aus. Damit wird der Server gestartet.
+Das Frontent wird in Kürze als .exe-Datei für Windows bereitsgestellt.
 
-To start the programm, fork this repository and open it with eclipse. Go to the directory Klausurplaner/src/de/klausurplaner/starter and execute Starter.java. Apart from that you will find executable files in the directory DonkeyFunk/demo.
-/Server/src/main/java/network/
+To start the server, fork the the directory "Server" as java project via Git and open it with Eclipse. Execute the file Start.java, which you can find in /Server/src/main/java/network/. This will start the Server.
+An executable file for Windows users will be provided soon.
+

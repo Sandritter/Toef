@@ -15,7 +15,7 @@ An executable file for Windows users will be provided soon.
 Demo
 ====
 
-http://vimeo.com/110443720
+https://vimeo.com/110383481
 
 Passwort auf Anfrage          
 

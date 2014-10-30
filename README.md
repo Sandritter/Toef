@@ -12,3 +12,11 @@ Das Frontent wird in Kürze als .exe-Datei für Windows bereitsgestellt.
 To start the server, fork the the directory "Server" as java project via Git and open it with Eclipse. Execute the file Start.java, which you can find in /Server/src/main/java/network/. This will start the Server.
 An executable file for Windows users will be provided soon.
 
+Demo
+====
+
+http://vimeo.com/110443720
+
+Passwort auf Anfrage          
+
+Please contact me to get the password
